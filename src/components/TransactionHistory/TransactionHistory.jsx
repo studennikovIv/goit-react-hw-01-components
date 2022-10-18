@@ -23,15 +23,15 @@ const TransactionHistory = ({ items }) => (
   </table>
 );
 
-TransactionHistory.prototype = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+TransactionHistory.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default TransactionHistory;
-
-// {
-//   id: PropTypes.number.isRequired,
-//   type: PropTypes.string.isRequired,
-//   amount: PropTypes.number.isRequired,
-//   currency: PropTypes.string.isRequired,
-// }
