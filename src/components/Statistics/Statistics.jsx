@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Statistics = ({ title, stats }) => (
   <section className={styles.statistics}>
-    {title ? <h2 className={styles.title}>{title}</h2> : ''}
+    {title && <h2 className={styles.title}>{title}</h2>}
 
     <ul className={styles.stat_list}>
       {stats.map(stat => (
@@ -17,12 +17,8 @@ const Statistics = ({ title, stats }) => (
 );
 
 Statistics.prototype = {
-  title: PropTypes.string.isRequired,
-  stats: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-    percentage: PropTypes.number.isRequired,
-  }),
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default Statistics;
